@@ -37,3 +37,37 @@
   }
 }
 
+\pgfdeclareshape{JJcap}
+{
+  \inheritsavedanchors[from=rectangle ee]
+  \inheritanchor[from=rectangle ee]{center}
+  \inheritanchor[from=rectangle ee]{north}
+  \inheritanchor[from=rectangle ee]{south}
+  \inheritanchor[from=rectangle ee]{east}
+  \inheritanchor[from=rectangle ee]{west}
+  \inheritanchor[from=rectangle ee]{north east}
+  \inheritanchor[from=rectangle ee]{north west}
+  \inheritanchor[from=rectangle ee]{south east}
+  \inheritanchor[from=rectangle ee]{south west}
+  \inheritanchor[from=rectangle ee]{input}
+  \inheritanchor[from=rectangle ee]{output}
+  \inheritanchorborder[from=rectangle ee]
+
+  \backgroundpath{
+	% Draw cross and box
+	\pgf@process{\pgfpointadd{\southwest}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}
+    \pgf@xa=\pgf@x \pgf@ya=\pgf@y
+    \pgf@process{\pgfpointadd{\northeast}{\pgfpointscale{-1}{\pgfpoint{\pgfkeysvalueof{/pgf/outer xsep}}{\pgfkeysvalueof{/pgf/outer ysep}}}}}
+    \pgf@xb=\pgf@x \pgf@yb=\pgf@y
+
+    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
+    \pgfpathmoveto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@yb}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@yb}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xa}{\pgf@ya}}
+    \pgfpathlineto{\pgfqpoint{\pgf@xb}{\pgf@ya}}
+  }
+}
